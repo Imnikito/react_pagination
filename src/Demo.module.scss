@@ -1,0 +1,24 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.controls {
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 10px 20px;
+  
+  label {
+     text-align:right;
+     align-self: center;
+  }
+
+  input {
+    padding: 5px;
+  }
+}

@@ -1,0 +1,9 @@
+@import './variables';
+
+body {
+  margin: 0;
+  font: $font-main;
+  color: $font-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
