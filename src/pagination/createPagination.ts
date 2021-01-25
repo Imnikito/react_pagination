@@ -1,3 +1,4 @@
+import { IPageItem, ICreatePageItem } from './items';
 import {
   pagesFactory,
   createEllipsisItem,
@@ -5,9 +6,9 @@ import {
   createNextItem,
 } from './items';
 
-export default function createPagination(siblingRange: number, currentPage: number, totalPages: number) {
+export default function createPagination(siblingRange: number, currentPage: number, totalPages: number): IPageItem[]  {
   const firstPage = 1;
-  const createPageItem = pagesFactory(currentPage);
+  const createPageItem: ICreatePageItem = pagesFactory(currentPage);
 
   const range = isSimplePagination(siblingRange, totalPages)
     ? createSimpleRange(firstPage, totalPages, createPageItem)
@@ -20,7 +21,7 @@ export default function createPagination(siblingRange: number, currentPage: numb
   ];
 }
 
-function createSimpleRange(start: number, end: number, createPageItem: (i: number) => any ) {
+function createSimpleRange(start: number, end: number, createPageItem: ICreatePageItem): IPageItem[] {
   return Array(end - start + 1).fill(undefined).map((_, i) => createPageItem(i + start));
 }
 
@@ -28,8 +29,8 @@ function createComplexRange(
     siblingRange: number,
     currentPage: number,
     totalPages: number,
-    createPageItem: (i: number) => any,
-  ) {
+    createPageItem: ICreatePageItem,
+  ): IPageItem[] {
   const ellipsis = 1;
   const firstGroupEnd = 1;
 
@@ -51,19 +52,19 @@ function createComplexRange(
 }
 
 // "Simple" means it can be created by enumeration only
-function isSimplePagination(siblingRange: number, totalPages: number) {
+function isSimplePagination(siblingRange: number, totalPages: number): boolean {
   const ellipsisSize = 2;
   const boundarySize = 2;  // first and last pages
   const siblingRangeSize = siblingRange * 2;
   return totalPages <= 1 + ellipsisSize + siblingRangeSize + boundarySize;
 }
 
-function leftGap(start: number, end: number, createPageItem: (i: number) => any) {
+function leftGap(start: number, end: number, createPageItem: ICreatePageItem): IPageItem {
   const showEllipsis = end - start > 2;
   return showEllipsis ? createEllipsisItem(start + 1) : createPageItem(end - 1);
 }
 
-function rightGap(start: number, end: number, createPageItem: (i: number) => any) {
+function rightGap(start: number, end: number, createPageItem: ICreatePageItem): IPageItem {
   const showEllipsis = end - start > 2;
   return showEllipsis ? createEllipsisItem(end - 1) : createPageItem(end - 1);
 }
