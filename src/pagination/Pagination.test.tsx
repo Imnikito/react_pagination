@@ -55,7 +55,7 @@ it('Arrow buttons switch pages correctly', () => {
 
 it.each([[30, 4], [30, 1], [30, 28], [3001, 2997]])
 ('If elements from one side do not fit only one ellipsis will be added. Number of elements remain the same',
-(totalPages, currentPage) => {
+(totalPages: number, currentPage: number): void => {
   const { getAllByText, queryAllByText } = render(
     <Pagination
       totalPages={totalPages}
@@ -90,7 +90,7 @@ it('If there is only 1 page one link and two arrows must be rendered', () => {
 
 it.each([[9, 2], [4, 2], [1, 2], [1, 3], [11, 3], [12, 4], [3, 4], [5, 1]])
 ('if totalPages <= number of size of pagination (without arrows) then show all pages, without any ellipsis',
-(totalPages, siblingRange) => {
+(totalPages: number, siblingRange: number): void => {
   const { getAllByText, queryAllByText } = render(
     <Pagination
       totalPages={totalPages}
