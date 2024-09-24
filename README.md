@@ -1,8 +1,9 @@
-Pagination ReactJS component
+Pagination component. React + TS + Vite
 
 ### Available Scripts
 
-### `npm start`
+### `npm run dev`
+
 ### `npm test`
+
 ### `npm run build`
-### `npm run eject`
