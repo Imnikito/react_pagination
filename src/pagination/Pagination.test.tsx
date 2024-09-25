@@ -1,5 +1,6 @@
 import Pagination from './Pagination';
 import { render, fireEvent } from '@testing-library/react';
+import { vi, it, expect } from 'vitest';
 
 /**
  * siblingRange - кол-во страниц, показываемых по сторонам от активной.
@@ -18,7 +19,7 @@ import { render, fireEvent } from '@testing-library/react';
  */
 
 it('When page item is clicked callback is called with a number of page as an argument', () => {
-  const mockCb = jest.fn();
+  const mockCb = vi.fn();
   const { getByText } = render(
     <Pagination
       totalPages={30}
@@ -33,7 +34,7 @@ it('When page item is clicked callback is called with a number of page as an arg
 });
 
 it('Arrow buttons switch pages correctly', () => {
-  const mockCb = jest.fn();
+  const mockCb = vi.fn();
   const { getByText } = render(
     <Pagination
       totalPages={30}
@@ -58,7 +59,7 @@ it.each([[30, 4], [30, 1], [30, 28], [3001, 2997]])
   const { getAllByText, queryAllByText } = render(
     <Pagination
       totalPages={totalPages}
-      selectPage={jest.fn()}
+      selectPage={vi.fn()}
       currentPage={currentPage}
       siblingRange={2}
     />,
@@ -75,7 +76,7 @@ it('If there is only 1 page one link and two arrows must be rendered', () => {
   const { getAllByText, queryAllByText } = render(
     <Pagination
       totalPages={1}
-      selectPage={jest.fn()}
+      selectPage={vi.fn()}
       currentPage={1}
     />,
   );
@@ -93,7 +94,7 @@ it.each([[9, 2], [4, 2], [1, 2], [1, 3], [11, 3], [12, 4], [3, 4], [5, 1]])
   const { getAllByText, queryAllByText } = render(
     <Pagination
       totalPages={totalPages}
-      selectPage={jest.fn()}
+      selectPage={vi.fn()}
       currentPage={1}
       siblingRange={siblingRange}
     />,
