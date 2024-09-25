@@ -17,8 +17,9 @@ const Pagination: React.FC<IProps> = ({
   siblingRange = 2,
 }) => (
   <div className={styles.pagination}>
-    {createPagination(siblingRange, currentPage, totalPages).map((props) => (
+    {createPagination(siblingRange, currentPage, totalPages).map(({key, ...props}) => (
         <PaginationItem
+          key={key}
           {...props}
           onClick={selectPage}
         />
