@@ -10,7 +10,7 @@ export default defineConfig({
     port: 3000,
   },
   test: {
-    // globals: true,
+    globals: true,
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
     coverage: {

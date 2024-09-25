@@ -1,6 +1,6 @@
 import Pagination from './Pagination';
 import { render, fireEvent } from '@testing-library/react';
-import { vi, it, expect } from 'vitest';
+// import { vi, it, expect } from 'vitest'; // no need with global=true
 
 /**
  * siblingRange - кол-во страниц, показываемых по сторонам от активной.

@@ -1,4 +1,4 @@
-Pagination component. React + TS + Vite
+Pagination component. React + TS + Vite + Vitest
 
 ### Available Scripts
 
