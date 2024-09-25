@@ -1,4 +1,3 @@
-import React from 'react';
 import Pagination from './Pagination';
 import { render, fireEvent } from '@testing-library/react';
 
